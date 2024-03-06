@@ -20,7 +20,7 @@ function isEmpty(rawData, fieldName) {
   const output = {
     status: true,
     messError: "",
-    input: rawData,
+    data: rawData,
   };
 
   if (rawData === "" || rawData === undefined) {
@@ -46,12 +46,14 @@ function isNumber(
   const OUTPUT = {
     status: true,
     messError: "",
-    data: rawData * 1,
+    data: rawData,
   };
 
   // Check empty or undefined
   let validateEmpty = isEmpty(OUTPUT.data, fieldName);
   if (!validateEmpty.status) return validateEmpty;
+
+  OUTPUT.data = OUTPUT.data * 1;
 
   // Check input is number
   if (Number.isNaN(OUTPUT.data)) {

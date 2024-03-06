@@ -125,5 +125,3 @@
 ### Output
 
 - Kết quả: Dãy số nguyên tố từ 1 tới `n` hoặc in lỗi cho người dùng (nếu không hợp lệ)
-
----

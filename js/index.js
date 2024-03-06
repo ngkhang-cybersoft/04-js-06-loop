@@ -9,27 +9,38 @@ function getMinNumber() {
   }
   ++min;
   let content = `Số nguyên dương nhỏ nhất: ${min}`;
-  let status = true;
+  let status = true; // Không cần validate input
   printOutput('#exercise01 #result', content, status);
 }
 
 // BT 02 - Tính tổng S(n) = x + x^2 + ... + x^n
 function getSum() {
-  let numberX = document.querySelector('#exercise02 #numberX').value * 1;
-  let numberN = document.querySelector('#exercise02 #numberN').value * 1;
-  let sum = 0;
+  let numberX = document.querySelector('#exercise02 #numberX').value;
+  let numberN = document.querySelector('#exercise02 #numberN').value;
 
-  // Cách 1: Sử dụng công thức toán học
-  // S(n) = x * ((1 - x^n) / (1-x))
+  let content = '';
+  let status = false;
 
-  // Cách 2: Dùng vòng lặp.
-  for (let step = 1; step <= numberN; step++) {
-    const temp = numberX ** step;
-    sum += temp;
+  // Validate input
+  let numberXValid = isNumber(numberX, 'Số x');
+  let numberNValid = isNumber(numberN, 'Số n');
+
+  if (!numberXValid.status) content = numberXValid.messError;
+  // if (numberXValid.data === 0) content = numberXValid.messError;
+  else if (!numberNValid.status) content = numberNValid.messError;
+  else {
+    let sum = 0;
+    status = numberNValid.status;
+    // Cách 1: Sử dụng công thức toán học
+    // S(n) = x * ((1 - x^n) / (1-x))
+
+    // Cách 2: Dùng vòng lặp.
+    for (let step = 1; step <= numberNValid.data; step++) {
+      sum += numberXValid.data ** step;
+    }
+    content = `Tổng: ${sum}`;
   }
 
-  let content = `Tổng: ${sum}`;
-  let status = true;
   printOutput('#exercise02 #result', content, status);
 }
 
@@ -48,11 +59,15 @@ function calFactorial(number) {
 }
 
 function printFactorial() {
-  let number = document.querySelector('#exercise03 #numberN').value * 1;
+  let number = document.querySelector('#exercise03 #numberN').value;
 
-  let content = `👉 Số ${number}  có giai thừa là ${calFactorial(number * 1)}`;;
+  let numberValid = isNumber(number, 'Số n');
 
-  let status = true;
+  let content = !numberValid.status && numberValid.messError;
+  let status = numberValid.status;
+
+  if (status) content = `👉 Số ${number} có giai thừa là ${calFactorial(number * 1)}`;
+
   printOutput('#exercise03 #result', content, status);
 }
 
@@ -72,9 +87,9 @@ function printDivTag() {
   let content = '';
   for (let step = 0; step < 10; step++) {
     let objNewDiv = OBJ_DIV[(step + 1) % 2];
-    content += `<div class="mb-2 text-white" style="${objNewDiv.property}: ${objNewDiv.value};">${step + 1}</div>\n`
+    content += `<div class="w-50 py-2 my-2 text-white text-center" style="${objNewDiv.property}: ${objNewDiv.value};">${step + 1}</div>\n`
   }
-  let status = true;
+  let status = true; // Không cần validate input
   printOutput('#exercise04 #result', content, status);
 }
 
@@ -88,13 +103,19 @@ function isPrimeNumber(number) {
   return true;
 }
 function printListPrimeNumber() {
-  let number = document.querySelector('#exercise05 #numberN').value * 1;
+  let number = document.querySelector('#exercise05 #numberN').value;
 
-  const listPrime = [];
-  for (let step = 2; step <= number; step++) {
-    if (isPrimeNumber(step)) listPrime.push(step);
+  let numberValid = isNumber(number, 'Số n');
+  let content = !numberValid.status && numberValid.messError;
+  let status = numberValid.status;
+
+  if (status) {
+    const listPrime = [];
+    for (let step = 1; step <= numberValid.data; step++) {
+      if (isPrimeNumber(step)) listPrime.push(step);
+    }
+    content = (listPrime.length === 0) ? 'Không có số nguyên tố' : listPrime.join(',');
   }
-  let content = listPrime.join(',');
-  let status = true;
+
   printOutput('#exercise05 #result', content, status);
 }

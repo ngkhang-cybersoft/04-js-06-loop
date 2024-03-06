@@ -71,6 +71,7 @@
             </button>
           </div>
         </div>
+
         <!-- Container Right -->
         <div class="container-right col-10 bg-light p-3">
           <!-- BT 01 - Tìm số nguyên dương n nhỏ nhất -->
@@ -80,9 +81,9 @@
             onkeydown="handleEnter(event, getMinNumber)"
           >
             <!-- Section Title -->
-            <h2 class="exercise_title mb-3">Tìm số nguyên dương n nhỏ nhất</h2>
+            <h2 class="exercise__title mb-3">Tìm số nguyên dương n nhỏ nhất</h2>
             <!-- Section Description -->
-            <div class="exercise_description p-3 mb-4">
+            <div class="exercise__description p-3 mb-4">
               <p class="mb-2">Điều kiện: 1 + 2 + 3 + ... + n > 10000</p>
             </div>
             <!-- Section Button -->
@@ -106,17 +107,52 @@
             onkeydown="handleEnter(event, getSum)"
           >
             <!-- Section Title -->
-            <h2 class="exercise_title mb-3">Tính tổng S(n)</h2>
+            <h2 class="exercise__title mb-3">Tính tổng S(n)</h2>
             <!-- Section Description -->
-            <div class="exercise_description p-3 mb-4">
+            <div class="exercise__description p-3 mb-4">
               <!-- Description -->
               <p class="mb-2">
                 Nhập n và x. Tính tổng S(n) = x + x^2 + ... + x^n
               </p>
+              <div class="row">
+                <!-- Validate input -->
+                <div class="col-5">
+                  <p class="mb-3">Validate Input</p>
+                  <ul>
+                    <li>Các trường không bỏ trống</li>
+                    <li>Số x, n là số nguyên dương</li>
+                  </ul>
+                </div>
+                <div class="col-7">
+                  <details class="mb-3">
+                    <summary>Test Case</summary>
+                    <table class="table">
+                      <thead>
+                        <td>Input</td>
+                        <td>Output</td>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>x = ; n = 4</td>
+                          <td>Hãy nhập Số x</td>
+                        </tr>
+                        <tr>
+                          <td>x = 2; n = abc</td>
+                          <td>Số n không phải là số</td>
+                        </tr>
+                        <tr>
+                          <td>x = 2; n = 4</td>
+                          <td>Tổng: 30</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </details>
+                </div>
+              </div>
             </div>
             <!-- Section Form -->
             <div class="container">
-              <div class="exercise_form row mb-2">
+              <div class="exercise__form row mb-2">
                 <div class="col-6 mb-3">
                   <div class="input__container position-relative">
                     <input
@@ -162,15 +198,50 @@
             onkeydown="handleEnter(event, printFactorial)"
           >
             <!-- Section Title -->
-            <h2 class="exercise_title mb-3">Tính giai thừa n</h2>
+            <h2 class="exercise__title mb-3">Tính giai thừa n</h2>
             <!-- Section Description -->
-            <div class="exercise_description p-3 mb-4">
+            <div class="exercise__description p-3 mb-4">
               <!-- Description -->
-              <p class="mb-2">Giai thừa của số n</p>
+              <p class="mb-2">Nhập n và tính giai thừa của số n</p>
+              <div class="row">
+                <!-- Validate input -->
+                <div class="col-5">
+                  <p class="mb-3">Validate Input</p>
+                  <ul>
+                    <li>n không bỏ trống</li>
+                    <li>Số n là số nguyên dương</li>
+                  </ul>
+                </div>
+                <div class="col-7">
+                  <details class="mb-3">
+                    <summary>Test Case</summary>
+                    <table class="table">
+                      <thead>
+                        <td>Input</td>
+                        <td>Output</td>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>n =</td>
+                          <td>Hãy nhập Số n</td>
+                        </tr>
+                        <tr>
+                          <td>n = abc</td>
+                          <td>Số n không phải là số</td>
+                        </tr>
+                        <tr>
+                          <td>n = 6</td>
+                          <td>Số 6 có giai thừa là 720</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </details>
+                </div>
+              </div>
             </div>
             <!-- Section Form -->
             <div class="container">
-              <div class="exercise_form row mb-2">
+              <div class="exercise__form row mb-2">
                 <div class="col-6 mb-3">
                   <div class="input__container position-relative">
                     <input
@@ -205,9 +276,9 @@
             onkeydown="handleEnter(event, printDivTag)"
           >
             <!-- Section Title -->
-            <h2 class="exercise_title mb-3">In 10 thẻ div</h2>
+            <h2 class="exercise__title mb-3">In 10 thẻ div</h2>
             <!-- Section Description -->
-            <div class="exercise_description p-3 mb-4">
+            <div class="exercise__description p-3 mb-4">
               <!-- Description -->
               <p class="mb-2">
                 Với div chẳn có background màu đỏ.
@@ -224,7 +295,10 @@
               Print
             </button>
             <!-- Section Result -->
-            <p id="result" class="rounded px-2 py-3 resultPedding">
+            <p
+              id="result"
+              class="rounded px-2 d-flex flex-column align-items-center resultPedding"
+            >
               👉 Kết quả...
             </p>
           </div>
@@ -236,15 +310,54 @@
             onkeydown="handleEnter(event, printListPrimeNumber)"
           >
             <!-- Section Title -->
-            <h2 class="exercise_title mb-3">In dãy số nguyên tố từ 1 đến n</h2>
+            <h2 class="exercise__title mb-3">In dãy số nguyên tố từ 1 đến n</h2>
             <!-- Section Description -->
-            <div class="exercise_description p-3 mb-4">
+            <div class="exercise__description p-3 mb-4">
               <!-- Description -->
               <p class="mb-2">Dãy số nguyên tố từ 1 tới n</p>
+              <div class="row">
+                <!-- Validate input -->
+                <div class="col-5">
+                  <p class="mb-3">Validate Input</p>
+                  <ul>
+                    <li>n không bỏ trống</li>
+                    <li>Số n là số nguyên dương</li>
+                  </ul>
+                </div>
+                <div class="col-7">
+                  <details class="mb-3">
+                    <summary>Test Case</summary>
+                    <table class="table">
+                      <thead>
+                        <td>Input</td>
+                        <td>Output</td>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>n =</td>
+                          <td>Hãy nhập Số n</td>
+                        </tr>
+                        <tr>
+                          <td>n = abc</td>
+                          <td>Số n không phải là số</td>
+                        </tr>
+                        <tr>
+                          <td>n = -10</td>
+                          <td>Số n không phải là số dương</td>
+                        </tr>
+                        <tr>
+                          <td>n = 20</td>
+                          <td>2,3,5,7,11,13,17,19</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </details>
+                </div>
+              </div>
             </div>
             <!-- Section Form -->
             <div class="container">
-              <div class="exercise_form row mb-2">
+              <div class="exercise__form row mb-2">
                 <div class="col-6 mb-3">
                   <div class="input__container position-relative">
                     <input
